@@ -1,0 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/playfair-display');
+@import url('https://fonts.cdnfonts.com/css/roboto-mono');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
