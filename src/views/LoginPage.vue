@@ -22,7 +22,11 @@
             id="password"
             placeholder="**********"
           />
-          <button class="bg-black text-white w-[300px] md:w-[500px] p-4 rounded-3xl md:m-5 m-2">Login</button>
+          <button
+            class="bg-black text-white w-[300px] md:w-[500px] p-4 rounded-3xl md:m-5 m-2"
+          >
+            Login
+          </button>
           <p>
             Don't have an account?
             <router-link to="/signup" class="text-xl">Sign Up</router-link>
@@ -32,17 +36,33 @@
     </div>
 
     <div>
-      <img src="../assets/image3.png" alt="image" class="w-full h-screen hidden md:block" />
+      <img
+        src="../assets/image3.png"
+        alt="image"
+        class="w-full h-screen hidden md:block"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import { useToast } from "vue-toastification";
+
 export default {
   name: "LoginPage",
   components: {
     NavBar,
+  },
+  setup() {
+    const toast = useToast();
+    toast.success("Login Successful!🥳", {
+      timeout: 1000,
+    });
+    toast.error("Login Failed!😭", {
+      timeout: 1000,
+    });
+    return { toast };
   },
 };
 </script>
