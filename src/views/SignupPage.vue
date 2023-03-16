@@ -9,35 +9,49 @@
           <p class="text-black text-xl">Sign Up to continue</p>
         </div>
 
-        <form class="flex flex-col">
+        <form @submit.prevent="signUp()" class="flex flex-col">
           <div class="flex md:flex-row flex-col">
             <input
               type="text"
+              v-model="fname"
               placeholder="Enter your first name"
               class="rounded-3xl w-[300px] md:w-[230px] md:m-5 m-2 p-4 placeholder-gray-300"
               id="fname"
+              required
             />
             <input
               type="text"
+              v-model="lname"
               placeholder="Enter your last name"
               class="rounded-3xl w-[300px] md:w-[230px] md:m-5 m-2 p-4 placeholder-gray-300"
               id="lname"
+              required
             />
           </div>
 
           <input
             type="email"
+            v-model="email"
             placeholder="Enter your email address"
             class="rounded-3xl w-[300px] md:w-[500px] md:m-5 m-2 p-4 placeholder-gray-300"
             id="email"
+            required
           />
           <input
             type="password"
             class="rounded-3xl w-[300px] md:w-[500px] md:m-5 m-2 p-4 placeholder-gray-300"
             id="password"
+            v-model="password"
             placeholder="**********"
+            required
           />
-          <button class="bg-black w-[300px] md:w-[500px] text-white p-4 rounded-3xl md:m-5 m-2">Sign Up</button>
+          <button
+            class="bg-black w-[300px] md:w-[500px] text-white p-4 rounded-3xl md:m-5 m-2"
+            @click="signUp"
+            onclick="event.preventDefault();"
+          >
+            Sign Up
+          </button>
           <p>
             Already have an account?
             <router-link to="/login" class="text-xl">Log In</router-link>
@@ -47,7 +61,11 @@
     </div>
 
     <div>
-      <img src="../assets/image3.png" alt="image" class="w-full h-screen hidden md:block" />
+      <img
+        src="../assets/image3.png"
+        alt="image"
+        class="w-full h-screen hidden md:block"
+      />
     </div>
   </div>
 </template>
@@ -55,9 +73,29 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 export default {
-  name: "SignupPage",
   components: {
     NavBar,
+  },
+  name: "SignupPage",
+  data() {
+    return {
+      fname: "",
+      lname: "",
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    signUp() {
+      this.$store.commit("auth/registerUser", {
+        firstname: this.fname,
+        lastname: this.lname,
+        email: this.email,
+        password: this.password,
+      });
+      alert("User registered successfully");
+      this.$router.push("/");
+    },
   },
 };
 </script>

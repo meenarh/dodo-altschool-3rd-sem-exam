@@ -7,8 +7,7 @@ import ProductPage from "./views/ProductPage.vue";
 import SignupPage from "./views/SignupPage.vue";
 import ErrorPage from "./views/ErrorPage.vue";
 import "./assets/css/tailwind.css";
-import Toast from "vue-toastification";
-import "vue-toastification/dist/index.css";
+import store from "./store/store.js";
 
 //toastify
 const options = {
@@ -32,9 +31,9 @@ const router = createRouter({
       path: "/products",
       name: "ProductPage",
       component: ProductPage,
-    //   meta: {
-    //     requiresAuth: true,
-    //   },
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: "/signup",
@@ -49,4 +48,4 @@ const router = createRouter({
   ],
 });
 
-createApp(App).use(router, options, Toast).mount("#app");
+createApp(App).use(router, options, store).mount("#app");

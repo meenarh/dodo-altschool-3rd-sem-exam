@@ -13,13 +13,13 @@
         DISCOVER UNIQUE & AUTHENTIC WEARS
       </h1>
       <button
-    v-if="isLoggedIn"
-    class="font-serif w-[170px] h-[60px] bg-red text-grey absolute z-10 rounded-md md:mt-[300px] mt-[250px]"
-  >
-    <router-link to="/products"> Discover Now </router-link>
-  </button>
-</div>
-</div>
+        v-if="isLoggedIn"
+        class="font-serif w-[170px] h-[60px] bg-red text-grey absolute z-10 rounded-md md:mt-[300px] mt-[250px]"
+      >
+        <router-link to="/products"> Discover Now </router-link>
+      </button>
+    </div>
+  </div>
 </template>
 <script>
 import NavBar from "@/components/NavBar.vue";
