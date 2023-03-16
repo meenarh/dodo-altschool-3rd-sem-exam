@@ -2,17 +2,14 @@
 <template>
   <div>
     <NavBar />
-    <div>
-      <img src="../assets/" />
-      <h2>Products</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-        illum ad odio dicta, voluptates asperiores! Quidem architecto debitis
-        minima corporis dicta reprehenderit ab molestiae! Consequuntur libero
-        sapiente temporibus eaque corrupti.
-      </p>
-      <ProductCard />
+    <div class="flex font-serif">
+         <img src="../assets/product.png" class="w-screen h-screen relative opacity-80 hidden md:block"/>
+         <h3 class="text-8xl text-red font-bold md:absolute md:ml-[32%] md:mt-[20%] m-14 text-center">Products</h3>
+      </div>
+    <div class="font-serif">
+     <ProductCard />
     </div>
+
   </div>
 </template>
 

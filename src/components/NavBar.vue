@@ -52,14 +52,14 @@
   <li class="text-white text-xl hover:text-black">
     <router-link to="/products">Products</router-link>
   </li>
-  <li v-if="!isLoggedIn" class="text-white text-xl hover:text-black">
+  <li class="text-white text-xl hover:text-black">
     <router-link to="/login">Login</router-link>
   </li>
-  <li v-if="!isLoggedIn" class="text-white text-xl hover:text-black">
+  <li class="text-white text-xl hover:text-black">
     <router-link to="/signup">Sign Up</router-link>
   </li>
   <li class="text-white text-xl hover:text-black">
-    <router-link to="#">Log Out</router-link>
+    <button @click="logout">Log Out</button>
   </li>
 </ul>
 </nav>
@@ -72,11 +72,12 @@ export default {
       showMenu: false,
     }
   },
-  computed: {
-    isLoggedIn() {
-      return false;
-    },
-  },
+  methods: {
+    logout() {
+      localStorage.removeItem('token');
+      this.$router.push('/login');
+    }
+  }
 };
 </script>
 <style scoped></style>

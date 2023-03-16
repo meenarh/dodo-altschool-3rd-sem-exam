@@ -27,7 +27,7 @@
           <button
           type="submit"
             class="bg-black text-white w-[300px] md:w-[500px] p-4 rounded-3xl md:m-5 m-2"
-            @click="login" onclick="event.preventDefault();"
+            @click="login" 
           >
             Login
           </button>
@@ -69,7 +69,6 @@ export default {
         email: this.email,
         password: this.password,
       })
-      alert("Login Successful");
       this.$router.push("/");
     }
   }

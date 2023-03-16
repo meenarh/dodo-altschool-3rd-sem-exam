@@ -48,7 +48,7 @@
           <button
             class="bg-black w-[300px] md:w-[500px] text-white p-4 rounded-3xl md:m-5 m-2"
             @click="signUp"
-            onclick="event.preventDefault();"
+            
           >
             Sign Up
           </button>
@@ -87,13 +87,12 @@ export default {
   },
   methods: {
     signUp() {
-      this.$store.commit("auth/registerUser", {
+      this.$store?.commit("auth/registerUser", {
         firstname: this.fname,
         lastname: this.lname,
         email: this.email,
         password: this.password,
       });
-      alert("User registered successfully");
       this.$router.push("/");
     },
   },

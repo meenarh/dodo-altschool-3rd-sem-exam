@@ -9,11 +9,6 @@ import ErrorPage from "./views/ErrorPage.vue";
 import "./assets/css/tailwind.css";
 import store from "./store/store.js";
 
-//toastify
-const options = {
-  // You can set your default options here
-};
-
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -31,9 +26,9 @@ const router = createRouter({
       path: "/products",
       name: "ProductPage",
       component: ProductPage,
-      meta: {
-        requiresAuth: true,
-      },
+      // meta: {
+      //   requiresAuth: true,
+      // },
     },
     {
       path: "/signup",
@@ -48,4 +43,13 @@ const router = createRouter({
   ],
 });
 
-createApp(App).use(router, options, store).mount("#app");
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+  if (to.meta.requiresAuth && !token) {
+    next('/login');
+  } else {
+    next();
+  }
+});
+
+createApp(App).use(router, store).mount("#app");
