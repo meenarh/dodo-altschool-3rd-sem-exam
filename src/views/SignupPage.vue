@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/valid-template-root -->
 <template>
   <NavBar />
   <div class="flex flex-row justify-between font-serif">
@@ -9,7 +8,7 @@
           <p class="text-black text-xl">Sign Up to continue</p>
         </div>
 
-        <form @submit.prevent="signUp()" class="flex flex-col">
+        <form @submit.prevent="signUp" class="flex flex-col">
           <div class="flex md:flex-row flex-col">
             <input
               type="text"
@@ -21,7 +20,7 @@
             />
             <input
               type="text"
-              v-model="lname"
+              v-model="lastname"
               placeholder="Enter your last name"
               class="rounded-3xl w-[300px] md:w-[230px] md:m-5 m-2 p-4 placeholder-gray-300"
               id="lname"
@@ -48,7 +47,6 @@
           <button
             class="bg-black w-[300px] md:w-[500px] text-white p-4 rounded-3xl md:m-5 m-2"
             @click="signUp"
-            
           >
             Sign Up
           </button>
@@ -72,6 +70,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import createStore from "../store/store";
 export default {
   components: {
     NavBar,
@@ -79,21 +78,24 @@ export default {
   name: "SignupPage",
   data() {
     return {
-      fname: "",
-      lname: "",
-      email: "",
-      password: "",
+      fname: createStore.state.firstname,
+      lname: createStore.state.lastname,
+      email: createStore.state.email,
+      password: createStore.state.password,
     };
   },
   methods: {
     signUp() {
-      this.$store?.commit("auth/registerUser", {
-        firstname: this.fname,
-        lastname: this.lname,
+      createStore.commit("registerUser");
+      const payload = {
         email: this.email,
         password: this.password,
-      });
-      this.$router.push("/");
+        firstname: this.fname,
+        lastname: this.lname,
+      };
+      localStorage.setItem("payload", JSON.stringify(payload));
+      console.log("successfully logged in");
+      this.$router.push("/login");
     },
   },
 };

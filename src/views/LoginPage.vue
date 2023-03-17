@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/valid-template-root -->
 <template>
   <NavBar />
   <div class="flex flex-row justify-between font-serif">
@@ -9,7 +8,7 @@
           <p class="text-black text-xl">Log into your account to continue</p>
         </div>
 
-        <form class="flex flex-col">
+        <form @submit.prevent="login" class="flex flex-col">
           <input
             type="email"
             placeholder="Enter your email address"
@@ -25,9 +24,9 @@
             placeholder="**********"
           />
           <button
-          type="submit"
+            type="submit"
             class="bg-black text-white w-[300px] md:w-[500px] p-4 rounded-3xl md:m-5 m-2"
-            @click="login" 
+            @click="login"
           >
             Login
           </button>
@@ -51,28 +50,35 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-
+import createStore from "../store/store";
 export default {
   name: "LoginPage",
   components: {
     NavBar,
   },
-  data(){
-    return{
-      email: "",
-      password: "",
+  data() {
+    return {
+      email: createStore.state.email,
+      password: createStore.state.password,
     };
   },
   methods: {
-    login(){
-      this.$store.commit('auth/loginUser',{
+    login() {
+      createStore.commit("loginUser", {
         email: this.email,
         password: this.password,
-      })
-      this.$router.push("/");
-    }
-  }
- 
+      });
+      console.log(`${this.email} ${this.password}`);
+      localStorage.setItem("isAuthenticated", true);
+      const authenticated = localStorage.getItem("isAuthenticated");
+      if (authenticated == "true") {
+        this.$router.push("/");
+      } else {
+        this.$router.push("/login");
+      }
+      location.href = "/";
+    },
+  },
 };
 </script>
 

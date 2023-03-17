@@ -15,7 +15,7 @@
       <button
         class="font-serif w-[170px] h-[60px] bg-red text-grey absolute z-10 rounded-md md:mt-[300px] mt-[250px]"
       >
-        <router-link to="/products"> Discover Now </router-link>
+        <router-link to="/productpage"> Discover Now </router-link>
       </button>
     </div>
   </div>
