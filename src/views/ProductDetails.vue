@@ -55,16 +55,19 @@
       </div>
     </div>
   </div>
+  <FooterComponent />
 </template>
 
 <script>
+import FooterComponent from "@/components/FooterComponent.vue";
 import NavBar from "@/components/NavBar.vue";
 import axios from "axios";
 export default {
   name: "ProductDetails",
   components: {
     NavBar,
-  },
+    FooterComponent
+},
   created() {
     this.getProducts();
   },

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex md:flex-auto justify-between font-serif bg-red p-8">
+  <nav class="flex md:flex-auto justify-between font-serif bg-red p-4">
     <div class="flex flex-row gap-2">
       <img src="../assets/shopping-bag.png" class="w-8 h-8" alt="logo" />
       <h3 class="text-2xl uppercase text-white">dodo</h3>

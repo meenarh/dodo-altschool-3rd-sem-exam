@@ -1,7 +1,7 @@
 <template>
   <div class="grid md:grid-cols-3 gap-3 mb:p-10">
     <div
-      class="card rounded-2xl flex flex-col gap-2 md:w-[400px] w-[350px] h-[550px] m-4"
+      class="card rounded-2xl flex flex-col gap-2 md:w-[400px] w-[350px] h-[550px] m-4 hover:"
       v-for="product in products"
       :key="product.id"
     >

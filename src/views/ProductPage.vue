@@ -9,20 +9,22 @@
     <div class="font-serif">
      <ProductCard />
     </div>
-
+<FooterComponent />
   </div>
 </template>
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
 import NavBar from "@/components/NavBar.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 export default {
   name: "ProductPage",
   components: {
     ProductCard,
     NavBar,
-  },
+    FooterComponent
+},
 };
 </script>
 

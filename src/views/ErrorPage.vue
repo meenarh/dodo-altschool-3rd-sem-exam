@@ -11,10 +11,12 @@
         <router-link to="/">Go back home</router-link>
       </button>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
+import FooterComponent from "@/components/FooterComponent.vue";
 import NavBar from "@/components/NavBar.vue";
 import { Vue3Lottie } from 'vue3-lottie'
 import 'vue3-lottie/dist/style.css'
@@ -22,9 +24,7 @@ import TRex from '../assets/T-rex.json'
 
 export default {
   name: "ErrorPage",
-  components: { NavBar,
-    Vue3Lottie,
-  },
+  components: { NavBar, Vue3Lottie, FooterComponent },
   data() {
     return {
       TRex
