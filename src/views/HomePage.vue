@@ -7,6 +7,7 @@
         alt="product one"
         class="relative w-full h-full"
       />
+      <h2>Welcome {{ name }}</h2>
       <h1
         class="md:text-7xl text-4xl text-center text-white font-sans md:m-16 m-8 absolute z-10"
       >

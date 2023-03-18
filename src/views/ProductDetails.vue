@@ -1,16 +1,14 @@
 <template>
   <NavBar />
-  <div class="px-[20px] py-[20px] flex justify-center items-center font-serif">
-    <div class="card rounded-2xl flex md:flex-row flex-col gap-20 w-fit h-secreen m-4">
+  <div class="px-[20px] py-[20px] flex justify-center items-center font-serif h-screen">
+    <div class="flex md:flex-row flex-col gap-20 w-fit">
       <div>
         <img :src="this.img" alt="" class="w-fit h-[300px] rounded-2xl" />
       </div>
       <div class="mt-[30px]">
-        <p class="text-4xl font-bold capitalize"> {{ title }}</p>
-        <p class="text-lg capitalize"> {{ brand }}</p>
-        <h4
-          class="mt-[20px] text-xl text-black capitalize rounded-lg"
-        >
+        <p class="text-4xl font-bold capitalize">{{ title }}</p>
+        <p class="text-lg capitalize">{{ brand }}</p>
+        <h4 class="mt-[20px] text-xl text-black capitalize rounded-lg">
           {{ description }}
         </h4>
         <h5
@@ -18,7 +16,7 @@
         >
           Category: {{ category }}
         </h5>
-        
+
         <div class="mt-[10px] flex space-x-[8px]">
           <p
             class="bg-[black] w-fit mt-[10px] text-[#fff] py-[7px] px-[20px] rounded-[6px]"
@@ -31,7 +29,7 @@
             {{ rating }}
           </p>
         </div>
-        
+
         <div
           @click="goBack"
           class="flex mt-[10px] cursor-pointer w-fit border rounded-[6px] text-center px-[20px] py-[6px] items-center space-x-[8px]"
@@ -66,8 +64,8 @@ export default {
   name: "ProductDetails",
   components: {
     NavBar,
-    FooterComponent
-},
+    FooterComponent,
+  },
   created() {
     this.getProducts();
   },
@@ -87,8 +85,9 @@ export default {
     async getProducts() {
       try {
         const parameter = this.$route.params.id;
+        console.log(parameter)
         const res = await axios.get(
-          `http://dummyjson.com/products/${parameter}`
+          `https://dummyjson.com/products/${parameter}`
         );
         console.log(res.data);
         this.products = res.data;
